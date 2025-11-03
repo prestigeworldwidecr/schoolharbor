@@ -1,0 +1,4 @@
+Task 4 — ADA by School-Month (5–6 min)
+Join attendance to roster_clean to bring in school.
+Compute ADA per (school, year_month):
+[ ADA = Sum(present) / Count(non-null present) ] Return tidy columns: school, year_month, present_days, marked_days, ADA.

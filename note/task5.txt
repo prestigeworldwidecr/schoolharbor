@@ -1,0 +1,30 @@
+Task 5 — SQL Companion (5-8 min)
+In this task, you’ll practice writing SQL queries against the synthetic K-12 dataset.
+Two tables have been provided for you directly from your Python work in earlier tasks:
+
+roster_clean_sql — a deduplicated, cleaned roster with columns (student_id, school, …).
+spring_latest_sql — the latest Spring assessment record for each student/subject with columns (student_id, subject, perf_level, …).
+You also have two existing tables in the database:
+
+programs — rows of (school, program, seats).
+program_enrollments — rows of (student_id, school, program).
+5a. Spring Testing & Proficiency by School
+Write a query that returns one row per school with:
+
+spring_tested: the number of unique students at that school who have any Spring assessment record (i.e., tested at least once).
+spring_prof_rate: among those tested students, the proportion who are Proficient or Advanced on at least one Spring subject.
+Hint: you’ll need to collapse to one row per (school, student) using an aggregate (e.g., MAX) so that if a student is Proficient in Math but not in ELA, they still count as Proficient overall.
+
+Your result should have the columns: school | spring_tested | spring_prof_rate
+
+5b. Program Enrollment Fill Rates
+Write a query that returns one row per (school, program) with:
+
+enrollees: the number of unique students enrolled in the program at that school.
+seats: the total number of available seats for that program at that school (from programs).
+fill_rate: enrollees / seats, capped at 1.0.
+Your result should have the columns:
+
+Deliverables
+Save the result of your first query as df_5a and the second as df_5b.
+Both DataFrames must have exactly the column names listed above to pass the checker.

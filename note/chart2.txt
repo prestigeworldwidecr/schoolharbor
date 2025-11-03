@@ -1,0 +1,3 @@
+Chart 2 — Chronic Absenteeism by Month (Heatmap)
+Intended takeaway (what this should communicate):
+Chronic absenteeism improved materially in March–May at Carver HS and Grant HS following spring interventions.

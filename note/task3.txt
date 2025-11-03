@@ -1,0 +1,17 @@
+Task 3 — School Test & Proficiency Rates (6-8 min)
+Using the cleaned roster (roster_clean) and your Spring assessment file (spring_latest), calculate two school-level metrics:
+
+Spring Test Rate
+
+Definition: The proportion of rostered students at a school who have any Spring assessment record.
+Spring Proficiency Rate
+
+Definition: Among students tested in Spring at a school, the proportion who are Proficient or Advanced on at least one subject.
+Instructions
+Begin by left-joining roster_clean to spring_latest on student_id to bring in each student’s school.
+Deduplicate appropriately so each student is only counted once per school.
+Compute the two rates defined above.
+Display a tidy dataframe named school_rates with exactly these three columns:
+school
+spring_test_rate
+spring_prof_rate

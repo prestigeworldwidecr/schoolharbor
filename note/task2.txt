@@ -1,0 +1,3 @@
+Task 2 — Latest Spring Assessments (5 min)
+Keep the latest record per (student_id,subject,season) using test_date.
+Then filter to Spring only. Name the result spring_latest.

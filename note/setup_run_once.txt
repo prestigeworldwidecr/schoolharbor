@@ -1,0 +1,18 @@
+https://colab.research.google.com/drive/11ATihb8S-YpWdV44I2WmQl36kFxPgXU-?usp=sharing&authuser=1#scrollTo=PQgS6TnhJHnD
+
+This is a short excercise set focused on practical data wrangling you’ll see in K‑12 analytics.
+
+What’s inside
+
+Synthetic K‑12 datasets (SIS roster, attendance, assessments, program seats).
+4 quick Pandas tasks + 1 SQL companion (run SQL against the same data via SQLite).
+A small helper function exercise.
+You may consult official library docs. Please do not use AI code completion/agents.
+
+Setup (Run Once) 
+Generates synthetic CSVs to ./data and prepares a SQLite database (schoolharbor.db) with the same tables for the SQL section.
+
+*** setup_run_once.py ***
+
+Saved CSVs to ./data
+SQLite database created: schoolharbor.db (tables: roster, attendance, assessments, programs, program_enrollments)
