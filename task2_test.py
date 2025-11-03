@@ -103,11 +103,40 @@ def check_task2(spring_latest: pd.DataFrame, assessments: pd.DataFrame) :
     else :
     # {
         passed = False
-        tips.append("Row count mismatch: expected", expected_n, "got", len(spring_latest))
+        tips.append("Row count mismatch: expected" + expected_n + "got" + len(spring_latest))
     # }
 
     # print_result(passed, "Task 2 — Latest Spring Assessments", tips)
     print(passed, "Task 2 — Latest Spring Assessments", tips)
 # }
 
+# 
+# task2.py
+#
+
+assessments = pd.read_csv("data/assessments.csv", parse_dates=["test_date"])
+
+# TODO: deduplicate by latest test_date per (student_id, subject, season)
+assessments.drop_duplicates(subset = ["student_id", "subject", "season"], inplace = True)
+
+# TODO: filter to spring only
+assessments = assessments[assessments["season"] == "Spring"]
+
+spring_latest = assessments.copy()
+dup_keys = spring_latest.duplicated(subset=["student_id","subject"]).sum()
+
+print("Duplicates after latest-per-key (should be 0):", dup_keys)
+print(spring_latest.head())
+
 check_task2(spring_latest, assessments)
+
+'''
+
+***** BONEYARD *****
+
+# filtered_df = df[df[filter_column] == filter_value]
+# roster_clean["school"] = roster_clean["school"].str.title().str.strip(' ')
+
+# display(spring_latest.head())
+
+'''

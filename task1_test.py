@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import sqlite3, os
+import task1
 
 # === CHECK: Task 1 — Roster Cleaning ===
 def check_task1(roster_clean: pd.DataFrame, roster_raw: pd.DataFrame) :
@@ -67,7 +68,7 @@ def check_task1(roster_clean: pd.DataFrame, roster_raw: pd.DataFrame) :
     if (bad_vals) :
     # {
         passed = False
-        tips.append("Invalid grade values found:", sorted(bad_vals))
+        tips.append("Invalid grade values found:" + str(sorted(bad_vals)))
     # }
 
     else :
@@ -78,6 +79,39 @@ def check_task1(roster_clean: pd.DataFrame, roster_raw: pd.DataFrame) :
     # print_result(passed, "Task 1 — Roster Cleaning", tips)
     print(passed, "Task 1 — Roster Cleaning", tips)
 # }
+
+#
+# task1.py
+# 
+
+roster = pd.read_csv("data/roster.csv", parse_dates=["dob"])
+
+# TODO: implement cleaning -> roster_clean
+
+roster_clean = roster.copy()
+
+# Step 1
+# Standardize first_name, last_name, and school to Title Case and trim whitespace
+roster_clean["first_name"] = roster_clean["first_name"].str.title().str.strip(' ')
+roster_clean["last_name"] = roster_clean["last_name"].str.title().str.strip(' ')
+roster_clean["school"] = roster_clean["school"].str.title().str.strip(' ')
+
+# Step 2
+# Deduplicate by student_id, keeping the first occurrence
+roster_clean.drop_duplicates(subset = "student_id", inplace = True)
+
+# Step 3
+# Ensure grade is a string with values K,1,2,3,4,5,6,7,8,9,10,11,12.
+roster_clean["grade"] = roster_clean["grade"].replace({"6.0" : "6"})
+roster_clean["grade"] = roster_clean["grade"].replace({"hs-senior" : "12"})
+    
+
+# display(roster_clean.head())
+print(roster_clean.head())
+print("\nSchools:")
+print(roster_clean["school"].value_counts())
+print("\nGrades:")
+print(roster_clean["grade"].value_counts())
 
 # Run it
 check_task1(roster_clean, roster)

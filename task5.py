@@ -1,8 +1,3 @@
-import pandas as pd
-import numpy as np
-from datetime import datetime, timedelta
-import sqlite3, os
-
 def run_sql(query: str) -> pd.DataFrame :
 # {
     conn = sqlite3.connect("schoolharbor.db")

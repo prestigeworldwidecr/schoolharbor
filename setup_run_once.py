@@ -102,21 +102,26 @@ assessments = pd.concat([assessments, dups], ignore_index=True)
 # Programs
 prog_rows = []
 
-for s in schools:
-
-    for prog in ["After School", "STEM Club", "Reading Lab"]:
-
+for s in schools :
+# {
+    for prog in ["After School", "STEM Club", "Reading Lab"] :
+    # {
         seats = np.random.randint(25, 90)
         prog_rows.append([s, prog, seats])
 programs = pd.DataFrame(prog_rows, columns=["school","program","seats"])
+    # }
+
+# }
 
 prog_enr = []
-for sid in roster.student_id.sample(frac=0.55, random_state=6):
 
+for sid in roster.student_id.sample(frac=0.55, random_state=6) :
+# {
     s = np.random.choice(schools)
     prog = np.random.choice(["After School", "STEM Club", "Reading Lab"], p=[0.5,0.3,0.2])
     prog_enr.append([sid, s, prog])
 program_enrollments = pd.DataFrame(prog_enr, columns=["student_id","school","program"])
+# }
 
 # Save CSVs
 os.makedirs("data", exist_ok=True)
@@ -138,8 +143,7 @@ conn.commit()
 conn.close()
 print("SQLite database created: schoolharbor.db (tables: roster, attendance, assessments, programs, program_enrollments)")
 
-# === Grading Utilities ===
-import pandas as pd
+# === Grading Utilities == #
 
 GREEN = "\x1b[92m"; RED = "\x1b[91m"; RESET = "\x1b[0m"
 def _ok(msg) :  
@@ -175,6 +179,7 @@ def print_result(passed: bool, header: str, tips=None) :
     # {        
         print("-", t)
     # }
-    
+
     print(bar)
+    
 # }
