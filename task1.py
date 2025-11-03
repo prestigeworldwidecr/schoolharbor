@@ -1,3 +1,8 @@
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+import sqlite3, os
+
 roster = pd.read_csv("data/roster.csv", parse_dates=["dob"])
 
 # TODO: implement cleaning -> roster_clean
@@ -19,7 +24,8 @@ roster_clean.drop_duplicates(subset = "student_id", inplace = True)
 roster_clean["grade"] = roster_clean["grade"].replace({"6.0" : "6"})
     
 
-display(roster_clean.head())
+# display(roster_clean.head())
+print(roster_clean.head())
 print("\nSchools:")
 print(roster_clean["school"].value_counts())
 print("\nGrades:")

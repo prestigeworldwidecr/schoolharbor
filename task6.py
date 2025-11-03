@@ -1,4 +1,10 @@
-def select_latest(df, key_cols, date_col):
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+import sqlite3, os
+
+def select_latest(df, key_cols, date_col) :
+# {
     """Return the latest row per key based on a datetime column.
 
     Parameters
@@ -16,8 +22,10 @@ def select_latest(df, key_cols, date_col):
 
     return out.copy()
 
+# }
 
 # Demo:
 _assess = pd.read_csv("data/assessments.csv", parse_dates=["test_date"])
 _latest = select_latest(_assess, ["student_id","subject","season"], "test_date")
-display(_latest.head())
+# display(_latest.head())
+print(_latest.head())
